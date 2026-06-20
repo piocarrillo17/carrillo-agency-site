@@ -1,21 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0A0A0A;
-  --foreground: #ffffff;
+  --navy: #0B1929;
+  --navy-mid: #112240;
+  --navy-light: #1A3A5C;
   --gold: #C9A84C;
   --gold-light: #E8C97A;
-  --dark-card: #1A1A1A;
-  --dark-border: #2A2A2A;
+  --gold-dark: #A8882E;
+  --white: #FFFFFF;
+  --off-white: #F8FAFC;
+  --slate: #94A3B8;
+  --border: #1E3A5F;
 }
+
+* { box-sizing: border-box; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', Arial, sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-.gold { color: var(--gold); }
-.gold-border { border-color: var(--gold); }
-.bg-gold { background-color: var(--gold); }
-.bg-dark-card { background-color: var(--dark-card); }
+.section-light {
+  background: var(--off-white);
+  color: #0B1929;
+}
+
+.gold-text { color: var(--gold); }
+.btn-gold {
+  background: var(--gold);
+  color: #000;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.1s;
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.btn-outline {
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.btn-outline:hover { background: var(--gold); color: #000; transform: translateY(-1px); }
+
+.card-navy {
+  background: var(--navy-mid);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.card-navy:hover { border-color: var(--gold); transform: translateY(-2px); }

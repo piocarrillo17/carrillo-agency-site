@@ -1,22 +1,20 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Carrillo Agency",
-  description: "Independent insurance agency — protecting families, building futures.",
+  title: "The Carrillo Agency | Insurance & Financial Protection",
+  description: "Independent insurance agency based in San Antonio, TX. Life insurance, final expense, mortgage protection, and debt-free life solutions for families.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-[#0A0A0A] text-white">
+      <body className="min-h-screen" style={{ background: "#0B1929", color: "#fff" }}>
         <Nav />
         {children}
-        <footer className="border-t border-[#2A2A2A] mt-20 py-10 text-center text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} Carrillo Agency. All rights reserved.</p>
-          <p className="mt-1">Licensed Insurance Professional | thecarrilloagency.com</p>
-        </footer>
+        <Footer />
       </body>
     </html>
   );
