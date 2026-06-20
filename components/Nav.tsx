@@ -16,16 +16,15 @@ export default function Nav() {
   return (
     <nav className="sticky top-0 z-50" style={{ background: "rgba(11,25,41,0.97)", borderBottom: "1px solid #1E3A5F", backdropFilter: "blur(12px)" }}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-18" style={{ height: "72px" }}>
-        <Link href="/" className="flex items-center gap-3">
-          <Image src="/logo.png" alt="The Carrillo Agency" width={52} height={52} className="object-contain shrink-0" />
-          <div>
-            <p className="font-black text-white leading-none" style={{ fontSize: "1.15rem", letterSpacing: "0.08em", fontFamily: "var(--font-montserrat), Arial, sans-serif" }}>
-              THE <span style={{ color: "#C9A84C" }}>CARRILLO</span>
-            </p>
-            <p className="font-black text-white leading-none" style={{ fontSize: "1.15rem", letterSpacing: "0.08em", fontFamily: "var(--font-montserrat), Arial, sans-serif" }}>
-              AGENCY
-            </p>
-          </div>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="The Carrillo Agency"
+            width={110}
+            height={110}
+            className="object-contain shrink-0 rounded-lg"
+            style={{ background: "#fff", padding: "6px" }}
+          />
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
