@@ -17,10 +17,14 @@ export default function Nav() {
     <nav className="sticky top-0 z-50" style={{ background: "rgba(11,25,41,0.97)", borderBottom: "1px solid #1E3A5F", backdropFilter: "blur(12px)" }}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-18" style={{ height: "72px" }}>
         <Link href="/" className="flex items-center gap-3">
-          <Image src="/logo.png" alt="The Carrillo Agency" width={44} height={44} className="object-contain" />
-          <div className="hidden sm:block">
-            <p className="text-xs tracking-widest text-[#C9A84C] font-semibold uppercase" style={{ lineHeight: 1 }}>The</p>
-            <p className="text-lg font-extrabold tracking-wide text-white" style={{ lineHeight: 1.1 }}>CARRILLO AGENCY</p>
+          <Image src="/logo.png" alt="The Carrillo Agency" width={52} height={52} className="object-contain shrink-0" />
+          <div>
+            <p className="font-black text-white leading-none" style={{ fontSize: "1.15rem", letterSpacing: "0.08em", fontFamily: "var(--font-montserrat), Arial, sans-serif" }}>
+              THE <span style={{ color: "#C9A84C" }}>CARRILLO</span>
+            </p>
+            <p className="font-black text-white leading-none" style={{ fontSize: "1.15rem", letterSpacing: "0.08em", fontFamily: "var(--font-montserrat), Arial, sans-serif" }}>
+              AGENCY
+            </p>
           </div>
         </Link>
 
