@@ -14,7 +14,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50" style={{ background: "rgba(11,25,41,0.97)", borderBottom: "1px solid #1E3A5F", backdropFilter: "blur(12px)" }}>
+    <nav className="sticky top-0 z-50" style={{ background: "rgba(255,255,255,0.97)", borderBottom: "1px solid #e2e8f0", backdropFilter: "blur(12px)" }}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-18" style={{ height: "72px" }}>
         <Link href="/" className="flex items-center">
           <Image
@@ -22,8 +22,7 @@ export default function Nav() {
             alt="The Carrillo Agency"
             width={110}
             height={110}
-            className="object-contain shrink-0 rounded-lg"
-            style={{ background: "#fff", padding: "6px" }}
+            className="object-contain shrink-0"
           />
         </Link>
 
@@ -32,7 +31,7 @@ export default function Nav() {
             <Link
               key={href}
               href={href}
-              className={`text-sm font-medium transition-colors hover:text-[#C9A84C] ${pathname === href ? "text-[#C9A84C]" : "text-gray-300"}`}
+              className={`text-sm font-medium transition-colors hover:text-[#C9A84C] ${pathname === href ? "text-[#C9A84C]" : "text-gray-700"}`}
             >
               {label}
             </Link>
@@ -52,17 +51,17 @@ export default function Nav() {
         </div>
 
         <button className="md:hidden flex flex-col gap-1.5 p-2" onClick={() => setOpen(!open)}>
-          <span className="block w-6 h-0.5 bg-white" />
-          <span className="block w-6 h-0.5 bg-white" />
-          <span className="block w-6 h-0.5 bg-white" />
+          <span className="block w-6 h-0.5 bg-gray-700" />
+          <span className="block w-6 h-0.5 bg-gray-700" />
+          <span className="block w-6 h-0.5 bg-gray-700" />
         </button>
       </div>
 
       {open && (
-        <div className="md:hidden px-6 py-5 flex flex-col gap-4 border-t border-[#1E3A5F]" style={{ background: "#0B1929" }}>
+        <div className="md:hidden px-6 py-5 flex flex-col gap-4 border-t border-gray-200" style={{ background: "#fff" }}>
           {links.map(({ href, label }) => (
             <Link key={href} href={href} onClick={() => setOpen(false)}
-              className={`text-sm font-medium hover:text-[#C9A84C] transition-colors ${pathname === href ? "text-[#C9A84C]" : "text-gray-300"}`}>
+              className={`text-sm font-medium hover:text-[#C9A84C] transition-colors ${pathname === href ? "text-[#C9A84C]" : "text-gray-700"}`}>
               {label}
             </Link>
           ))}
