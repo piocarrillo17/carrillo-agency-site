@@ -121,6 +121,32 @@ export default function Join() {
         </div>
       </section>
 
+      {/* FEATURED VIDEO — Get to Know SFG */}
+      <section className="py-24 px-6" style={{ background: "#fff" }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="font-black uppercase tracking-widest mb-3" style={{ color: royal, fontSize: "0.7rem", letterSpacing: "0.2em" }}>
+              Watch Our Story
+            </p>
+            <h2 className="font-black leading-tight mb-4" style={{ color: midnight, fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 900 }}>
+              Get to Know Symmetry Financial Group
+            </h2>
+            <p style={{ color: "#4a5568", fontWeight: 300, fontSize: "1rem", maxWidth: "480px", margin: "0 auto" }}>
+              See why thousands of independent agents across all 50 states have chosen SFG to build their careers.
+            </p>
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-xl" style={{ border: `2px solid ${royal}`, aspectRatio: "16/9" }}>
+            <iframe
+              src="https://fast.wistia.net/embed/iframe/jtdq52cwj8?videoFoam=true"
+              title="Get to Know Symmetry Financial Group (2024)"
+              allowFullScreen
+              className="w-full h-full"
+              style={{ border: "none", display: "block" }}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* VALUE PROPOSITIONS */}
       <section className="py-24 px-6" style={{ background: "#fff" }}>
         <div className="max-w-7xl mx-auto">
@@ -177,36 +203,52 @@ export default function Join() {
 
       {/* LEADS — Darkest Blue */}
       <section className="py-24 px-6" style={{ background: darkest }}>
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <p className="font-black uppercase tracking-widest mb-4" style={{ color: skyBlue, fontSize: "0.7rem", letterSpacing: "0.2em" }}>
-              Quility LeadStream
-            </p>
-            <h2 className="font-black leading-tight text-white mb-6" style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 900 }}>
-              A Leads Program<br />Built for Agents,<br />
-              <span style={{ color: yellow }}>by Agents.</span>
-            </h2>
-            <p className="mb-4 leading-relaxed" style={{ color: "rgba(255,255,255,0.75)", fontWeight: 300, fontSize: "1rem" }}>
-              Stop chasing cold contacts. Quility LeadStream delivers verified, TCPA-compliant prospects in real time — fully customizable by type, source, and geography.
-            </p>
-            <p className="mb-8 leading-relaxed" style={{ color: "rgba(255,255,255,0.75)", fontWeight: 300, fontSize: "1rem" }}>
-              Symmetry agents average a <span className="font-black text-white">3.5x or greater return</span> on their lead investment. The more you invest, the more you grow.
-            </p>
-            <a href="#apply"
-              className="inline-block px-8 py-4 rounded-lg text-black transition-all hover:opacity-90"
-              style={{ background: yellow, fontWeight: 900, fontSize: "0.85rem", letterSpacing: "0.06em" }}>
-              GET ACCESS TO LEADS
-            </a>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center mb-16">
+            <div>
+              <p className="font-black uppercase tracking-widest mb-4" style={{ color: skyBlue, fontSize: "0.7rem", letterSpacing: "0.2em" }}>
+                Quility LeadStream
+              </p>
+              <h2 className="font-black leading-tight text-white mb-6" style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 900 }}>
+                A Leads Program<br />Built for Agents,<br />
+                <span style={{ color: yellow }}>by Agents.</span>
+              </h2>
+              <p className="mb-4 leading-relaxed" style={{ color: "rgba(255,255,255,0.75)", fontWeight: 300, fontSize: "1rem" }}>
+                Stop chasing cold contacts. Quility LeadStream delivers verified, TCPA-compliant prospects in real time — fully customizable by type, source, and geography.
+              </p>
+              <p className="mb-8 leading-relaxed" style={{ color: "rgba(255,255,255,0.75)", fontWeight: 300, fontSize: "1rem" }}>
+                Symmetry agents average a <span className="font-black text-white">3.5x or greater return</span> on their lead investment. The more you invest, the more you grow.
+              </p>
+              <a href="#apply"
+                className="inline-block px-8 py-4 rounded-lg text-black transition-all hover:opacity-90"
+                style={{ background: yellow, fontWeight: 900, fontSize: "0.85rem", letterSpacing: "0.06em" }}>
+                GET ACCESS TO LEADS
+              </a>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {leadTypes.map(({ icon, name }) => (
+                <div key={name} className="flex items-center gap-3 px-5 py-4 rounded-xl"
+                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(0,183,255,0.2)" }}>
+                  <span className="text-2xl">{icon}</span>
+                  <span className="font-bold text-white" style={{ fontSize: "0.85rem", fontWeight: 700 }}>{name}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-2 gap-3">
-            {leadTypes.map(({ icon, name }) => (
-              <div key={name} className="flex items-center gap-3 px-5 py-4 rounded-xl"
-                style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(0,183,255,0.2)" }}>
-                <span className="text-2xl">{icon}</span>
-                <span className="font-bold text-white" style={{ fontSize: "0.85rem", fontWeight: 700 }}>{name}</span>
-              </div>
-            ))}
+
+          {/* Leads video */}
+          <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(0,183,255,0.25)", aspectRatio: "16/9" }}>
+            <iframe
+              src="https://fast.wistia.net/embed/iframe/f1r12pibj7?videoFoam=true"
+              title="Own Your Career | Effective Leads"
+              allowFullScreen
+              className="w-full h-full"
+              style={{ border: "none", display: "block" }}
+            />
           </div>
+          <p className="text-center mt-4 font-bold uppercase tracking-widest" style={{ color: skyBlue, fontSize: "0.65rem", letterSpacing: "0.18em" }}>
+            Own Your Career | Effective Leads
+          </p>
         </div>
       </section>
 
@@ -319,8 +361,49 @@ export default function Join() {
         </div>
       </section>
 
+      {/* VIDEO GALLERY — Recruiting */}
+      <section className="py-24 px-6" style={{ background: "#fff" }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="font-black uppercase tracking-widest mb-3" style={{ color: royal, fontSize: "0.7rem", letterSpacing: "0.2em" }}>
+              Hear From Our Agents
+            </p>
+            <h2 className="font-black leading-tight mb-4" style={{ color: midnight, fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 900 }}>
+              Real Stories. Real Results.
+            </h2>
+            <p style={{ color: "#4a5568", fontWeight: 300, fontSize: "1rem", maxWidth: "460px", margin: "0 auto" }}>
+              See how agents across the country are building careers and changing their lives with Symmetry Financial Group.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              { id: "5a31uqs1gj", title: "A Life-Changing Opportunity", duration: "3:49" },
+              { id: "2j1xzp88qz", title: "If I Can Do It, You Can Do It", duration: "4:08" },
+              { id: "kvh8pp0do1", title: "True Ownership & Equity", duration: "3:30" },
+              { id: "8h11tc1dyc", title: "Living Your Legacy", duration: "3:20" },
+            ].map(({ id, title, duration }) => (
+              <div key={id}>
+                <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0", aspectRatio: "16/9", boxShadow: "0 4px 20px rgba(1,22,132,0.08)" }}>
+                  <iframe
+                    src={`https://fast.wistia.net/embed/iframe/${id}?videoFoam=true`}
+                    title={title}
+                    allowFullScreen
+                    className="w-full h-full"
+                    style={{ border: "none", display: "block" }}
+                  />
+                </div>
+                <div className="mt-3 flex items-center justify-between px-1">
+                  <p className="font-black" style={{ color: midnight, fontSize: "0.9rem", fontWeight: 900 }}>{title}</p>
+                  <p className="font-bold" style={{ color: skyBlue, fontSize: "0.75rem", fontWeight: 700 }}>{duration}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* APPLY FORM */}
-      <section id="apply" className="py-24 px-6" style={{ background: "#fff" }}>
+      <section id="apply" className="py-24 px-6" style={{ background: "#fafbff" }}>
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
             <p className="font-black uppercase tracking-widest mb-3" style={{ color: royal, fontSize: "0.7rem", letterSpacing: "0.2em" }}>
