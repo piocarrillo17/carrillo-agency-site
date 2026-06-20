@@ -55,8 +55,8 @@ export default function Join() {
       <section className="relative flex items-center overflow-hidden" style={{ minHeight: "85vh", background: midnight }}>
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&q=80"
-            alt="Agents working"
+            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=80"
+            alt="Insurance agent meeting with clients"
             className="w-full h-full object-cover object-center"
             style={{ opacity: 0.12 }}
           />
@@ -348,8 +348,8 @@ export default function Join() {
           </div>
           <div className="relative rounded-2xl overflow-hidden" style={{ minHeight: "460px" }}>
             <img
-              src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=900&q=80"
-              alt="Young professional working remotely"
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80"
+              alt="Young professional smiling with laptop"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 40%, rgba(1,22,132,0.92) 100%)" }} />

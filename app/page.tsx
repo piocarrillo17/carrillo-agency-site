@@ -52,7 +52,7 @@ export default function Home() {
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1511895426328-dc8714191011?w=1920&q=80"
+            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1920&q=80"
             alt="Happy family"
             className="w-full h-full object-cover object-center"
             style={{ filter: "brightness(0.35)" }}
@@ -115,6 +115,24 @@ export default function Home() {
                 <div className="text-4xl mb-5">{icon}</div>
                 <h3 className="text-lg font-bold mb-3">{title}</h3>
                 <p className="text-sm text-[#94A3B8] leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PHOTO STRIP — SFG mood: candid, diverse, professional */}
+      <section className="py-16 px-6" style={{ background: "#F8FAFC" }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80", alt: "Agent meeting with family at home" },
+              { src: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80", alt: "Professional woman with documents" },
+              { src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80", alt: "Person working from home on laptop" },
+              { src: "https://images.unsplash.com/photo-1543342384-1f1350e27861?w=600&q=80", alt: "Happy family outdoors" },
+            ].map(({ src, alt }) => (
+              <div key={alt} className="rounded-2xl overflow-hidden" style={{ aspectRatio: "4/3" }}>
+                <img src={src} alt={alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             ))}
           </div>

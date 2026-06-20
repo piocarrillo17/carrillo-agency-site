@@ -26,8 +26,7 @@ export default function Footer() {
             <div className="flex flex-col gap-2">
               {[
                 { href: "/", label: "Home" },
-                { href: "/licenses", label: "Licenses" },
-                { href: "/join", label: "Work With Us" },
+                  { href: "/join", label: "Work With Us" },
                 { href: "/login", label: "Agent Login" },
               ].map(({ href, label }) => (
                 <Link key={href} href={href} className="text-sm text-[#94A3B8] hover:text-[#C9A84C] transition-colors">{label}</Link>
