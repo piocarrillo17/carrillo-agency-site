@@ -1,65 +1,120 @@
-import Image from "next/image";
+import Link from "next/link";
+
+const carriers = [
+  "Mutual of Omaha", "Aetna", "Cigna", "Humana", "UnitedHealthcare",
+  "Anthem", "Molina Healthcare", "WellCare", "Centene", "CVS Health",
+  "Oscar Health", "Ambetter", "BCBS", "Allstate", "Transamerica",
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main>
+      {/* Hero */}
+      <section className="relative min-h-[88vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1a1000] via-[#0A0A0A] to-[#0A0A0A] pointer-events-none" />
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <p className="text-[#C9A84C] text-sm font-semibold tracking-widest uppercase mb-4">
+            Independent Insurance Agency
           </p>
+          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+            Protecting Families.<br />
+            <span className="text-[#C9A84C]">Building Futures.</span>
+          </h1>
+          <p className="text-gray-400 text-lg md:text-xl mb-10 max-w-xl mx-auto">
+            The Carrillo Agency is an independent brokerage offering unbiased coverage
+            options from the nation&apos;s top carriers — tailored to your life and budget.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="mailto:piocarrillo17@gmail.com?subject=Free Quote Request"
+              className="px-8 py-3 bg-[#C9A84C] text-black font-bold rounded hover:bg-[#E8C97A] transition-colors"
+            >
+              Get a Free Quote
+            </a>
+            <Link
+              href="/licenses"
+              className="px-8 py-3 border border-[#C9A84C] text-[#C9A84C] font-semibold rounded hover:bg-[#C9A84C] hover:text-black transition-colors"
+            >
+              View My Credentials
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Why Us */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold text-center mb-4">
+          Why Choose an <span className="text-[#C9A84C]">Independent Agent?</span>
+        </h2>
+        <p className="text-gray-400 text-center max-w-xl mx-auto mb-14">
+          Unlike captive agents tied to one company, I work for you — shopping multiple
+          carriers to find the best coverage at the best price.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              icon: "🏆",
+              title: "Unbiased Advice",
+              desc: "I have no quotas or brand loyalty. My only job is finding the right plan for your situation.",
+            },
+            {
+              icon: "📋",
+              title: "Multiple Carriers",
+              desc: "Access to 15+ top-rated carriers means more options, more competition, and better rates for you.",
+            },
+            {
+              icon: "🤝",
+              title: "Personal Service",
+              desc: "You work directly with me — not a call center. I am here for questions, claims, and renewals.",
+            },
+          ].map(({ icon, title, desc }) => (
+            <div key={title} className="bg-[#1A1A1A] border border-[#2A2A2A] rounded-xl p-6 hover:border-[#C9A84C] transition-colors">
+              <div className="text-3xl mb-4">{icon}</div>
+              <h3 className="text-lg font-bold mb-2">{title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
+            </div>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Carriers */}
+      <section className="bg-[#111] border-y border-[#2A2A2A] py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-4">
+            Carriers I&apos;m <span className="text-[#C9A84C]">Brokered With</span>
+          </h2>
+          <p className="text-gray-400 text-center mb-12">
+            Access to the nation&apos;s most trusted insurance providers.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {carriers.map((carrier) => (
+              <div
+                key={carrier}
+                className="bg-[#1A1A1A] border border-[#2A2A2A] rounded-lg px-4 py-5 text-center text-sm font-semibold text-gray-300 hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors"
+              >
+                {carrier}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="max-w-3xl mx-auto px-6 py-24 text-center">
+        <h2 className="text-4xl font-extrabold mb-4">
+          Ready to Get <span className="text-[#C9A84C]">Covered?</span>
+        </h2>
+        <p className="text-gray-400 mb-8">
+          Let&apos;s find a plan that fits your life. Reach out today for a no-pressure,
+          free consultation.
+        </p>
+        <a
+          href="mailto:piocarrillo17@gmail.com?subject=Free Quote Request"
+          className="inline-block px-10 py-4 bg-[#C9A84C] text-black font-bold text-lg rounded hover:bg-[#E8C97A] transition-colors"
+        >
+          Contact Me Today
+        </a>
+      </section>
+    </main>
   );
 }
