@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "The Carrillo Agency | Insurance & Financial Protection",
@@ -10,8 +18,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen" style={{ background: "#0B1929", color: "#fff" }}>
+    <html lang="en" className={montserrat.variable}>
+      <body className="min-h-screen" style={{ background: "#0B1929", color: "#fff", fontFamily: "var(--font-montserrat), Arial, sans-serif" }}>
         <Nav />
         {children}
         <Footer />
