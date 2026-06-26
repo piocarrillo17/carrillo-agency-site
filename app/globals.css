@@ -22,6 +22,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Agent dashboard: body adapts to the theme set on <html> by ThemeProvider */
+[data-theme="dark"] body { background: var(--bg); color: var(--fg); }
+[data-theme="light"] body { background: var(--bg); color: var(--fg); }
+
 .section-light {
   background: var(--off-white);
   color: #0B1929;
