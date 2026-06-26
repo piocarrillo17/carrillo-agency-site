@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import { Montserrat, Bebas_Neue } from "next/font/google";
+import { Montserrat, Bebas_Neue, Inter } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -19,20 +16,25 @@ const bebasNeue = Bebas_Neue({
   display: "swap",
 });
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "The Carrillo Agency | Insurance & Financial Protection",
-  description: "Independent insurance agency based in San Antonio, TX. Life insurance, final expense, mortgage protection, and debt-free life solutions for families.",
+  description: "Independent insurance agency. Life insurance, final expense, mortgage protection, and debt-free life solutions for families across all 50 states.",
+  icons: {
+    icon: "/icon-192.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${bebasNeue.variable}`}>
-      <body className="min-h-screen" style={{ background: "#0B1929", color: "#fff", fontFamily: "var(--font-montserrat), Arial, sans-serif" }}>
-        <Nav />
-        {children}
-        <Footer />
-        <SpeedInsights />
-      </body>
+    <html lang="en" className={`${montserrat.variable} ${bebasNeue.variable} ${inter.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
