@@ -132,10 +132,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { src: "https://images.unsplash.com/photo-1543342384-1f1350e27861?w=600&q=80", alt: "Happy family outdoors" },
-              { src: "https://images.unsplash.com/photo-1511895426328-dc8714191011?w=600&q=80", alt: "Family laughing together" },
-              { src: "https://images.unsplash.com/photo-1506863530036-1efeddceb993?w=600&q=80", alt: "Parents with young children" },
-              { src: "https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=600&q=80", alt: "Family portrait smiling" },
+              { src: "https://images.unsplash.com/photo-1543342384-1f1350e27861?w=600&q=80", alt: "Parents holding newborn baby" },
+              { src: "https://images.unsplash.com/photo-1536640712-4d4c36ff0e4e?w=600&q=80", alt: "Family playing outside together" },
+              { src: "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=600&q=80", alt: "Kids playing in the backyard" },
+              { src: "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80", alt: "Happy family with children smiling" },
             ].map(({ src, alt }) => (
               <div key={alt} className="rounded-2xl overflow-hidden" style={{ aspectRatio: "4/3" }}>
                 <img src={src} alt={alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
