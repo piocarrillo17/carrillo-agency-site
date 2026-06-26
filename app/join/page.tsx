@@ -81,8 +81,8 @@ export default function Join() {
             </p>
             <h1 className="font-black leading-tight text-white mb-6"
               style={{ fontSize: "clamp(2.8rem, 6vw, 4.2rem)", fontWeight: 900, lineHeight: 1.1 }}>
-              Own Your Career<br />
-              <span style={{ color: yellow }}>with Symmetry<br />Financial Group.</span>
+              Join the<br />
+              <span style={{ color: yellow }}>Carrillo Agency.</span>
             </h1>
             <p className="mb-10 max-w-2xl leading-relaxed"
               style={{ fontSize: "1.1rem", fontWeight: 300, color: "rgba(255,255,255,0.82)" }}>
@@ -97,7 +97,7 @@ export default function Join() {
               <a href="tel:2108705200"
                 className="px-10 py-4 rounded-lg text-white text-center border-2 hover:bg-white hover:text-black transition-all"
                 style={{ borderColor: skyBlue, fontWeight: 700, fontSize: "0.9rem" }}>
-                Talk to Pio — (210) 870-5200
+                Talk to Pio
               </a>
             </div>
           </div>
@@ -348,14 +348,14 @@ export default function Join() {
           </div>
           <div className="relative rounded-2xl overflow-hidden" style={{ minHeight: "460px" }}>
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80"
-              alt="Young professional smiling with laptop"
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80"
+              alt="Happy team working on laptops in modern office"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 40%, rgba(1,22,132,0.92) 100%)" }} />
             <div className="absolute bottom-0 left-0 right-0 p-8">
-              <p className="font-black text-white" style={{ fontSize: "1.5rem", fontWeight: 900 }}>Own Your Career.</p>
-              <p className="font-bold" style={{ color: yellow, fontSize: "1rem", fontWeight: 700 }}>Experience the Symmetry Difference.</p>
+              <p className="font-black text-white" style={{ fontSize: "1.5rem", fontWeight: 900 }}>Build Your Business.</p>
+              <p className="font-bold" style={{ color: yellow, fontSize: "1rem", fontWeight: 700 }}>The Carrillo Agency · Powered by Symmetry Financial Group</p>
             </div>
           </div>
         </div>
@@ -410,8 +410,11 @@ export default function Join() {
               Start Your Journey
             </p>
             <h2 className="font-black leading-tight mb-4" style={{ color: midnight, fontSize: "clamp(2rem, 4vw, 2.5rem)", fontWeight: 900 }}>
-              Apply to Join<br />The Carrillo Agency
+              Join the Carrillo Agency
             </h2>
+            <p className="font-black uppercase tracking-widest" style={{ color: royal, fontSize: "0.65rem", letterSpacing: "0.2em" }}>
+              Powered by Symmetry Financial Group
+            </p>
             <p style={{ color: "#4a5568", fontWeight: 300, fontSize: "1rem" }}>
               Fill out the form and Pio will personally reach out within 24 hours.
             </p>
