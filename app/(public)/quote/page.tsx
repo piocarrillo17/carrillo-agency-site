@@ -1,6 +1,26 @@
+"use client";
+import { useState, type FormEvent } from "react";
 export default function QuotePage() {
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  async function submitQuote(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (status === "sending") return;
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    if (data.get("botcheck")) return;
+    setStatus("sending");
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST", body: data, headers: { Accept: "application/json" },
+      });
+      const result = await response.json();
+      if (!response.ok || result.success !== true) throw new Error("Submission failed");
+      form.reset();
+      setStatus("success");
+    } catch { setStatus("error"); }
+  }
   return (
-    <main className="min-h-screen py-24 px-6" style={{ background: "#0B1929" }}>
+    <main id="main-content" className="min-h-screen py-24 px-6" style={{ background: "#0B1929" }}>
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-[#C9A84C] text-sm font-semibold tracking-widest uppercase mb-3">
@@ -15,12 +35,18 @@ export default function QuotePage() {
         </div>
 
         <form
-          action="mailto:piocarrillosfg@gmail.com"
-          method="GET"
-          encType="text/plain"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          onSubmit={submitQuote}
+          aria-busy={status === "sending"}
           className="flex flex-col gap-5 rounded-2xl p-8"
           style={{ background: "#112240", border: "1.5px solid rgba(201,168,76,0.2)", boxShadow: "0 4px 32px rgba(0,0,0,0.3)" }}
         >
+          <input type="hidden" name="access_key" value="989cce7b-565a-4ac2-b007-505e8848316c" />
+          <input type="hidden" name="subject" value="New Quote Request — Carrillo Agency" />
+          <input type="hidden" name="from_name" value="Carrillo Agency Website" />
+          <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+          <p className="text-sm">Request a conversation using your contact details. Please do not include medical, banking, or Social Security information. Your request is processed by Web3Forms and delivered by email.</p>
           {/* Name */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {[
@@ -28,8 +54,9 @@ export default function QuotePage() {
               { label: "Last Name", name: "Last Name", placeholder: "Doe", type: "text" },
             ].map(({ label, name, placeholder, type }) => (
               <div key={name}>
-                <label className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>{label} *</label>
+                <label htmlFor={name} className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>{label} *</label>
                 <input
+                  id={name}
                   type={type}
                   name={name}
                   required
@@ -44,10 +71,10 @@ export default function QuotePage() {
           {/* Contact */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>Email Address *</label>
+              <label htmlFor="email" className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>Email Address *</label>
               <input
                 type="email"
-                name="Email"
+                id="email" name="email"
                 required
                 placeholder="john@email.com"
                 className="w-full rounded-lg px-4 py-3 focus:outline-none"
@@ -55,10 +82,10 @@ export default function QuotePage() {
               />
             </div>
             <div>
-              <label className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>Phone Number *</label>
+              <label htmlFor="Phone" className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>Phone Number *</label>
               <input
                 type="tel"
-                name="Phone"
+                id="Phone" name="Phone"
                 required
                 placeholder="(555) 000-0000"
                 className="w-full rounded-lg px-4 py-3 focus:outline-none"
@@ -69,9 +96,9 @@ export default function QuotePage() {
 
           {/* Coverage */}
           <div>
-            <label className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>Desired Coverage *</label>
+            <label htmlFor="Desired Coverage" className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>Desired Coverage *</label>
             <select
-              name="Desired Coverage"
+              id="Desired Coverage" name="Desired Coverage"
               required
               className="w-full rounded-lg px-4 py-3 focus:outline-none"
               style={{ background: "#0B1929", border: "1.5px solid rgba(201,168,76,0.3)", color: "#fff", fontSize: "0.9rem", fontFamily: "inherit" }}
@@ -90,50 +117,12 @@ export default function QuotePage() {
             </select>
           </div>
 
-          {/* Date of Birth */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div>
-              <label className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>Date of Birth</label>
-              <input
-                type="date"
-                name="Date of Birth"
-                className="w-full rounded-lg px-4 py-3 focus:outline-none"
-                style={{ background: "#0B1929", border: "1.5px solid rgba(201,168,76,0.3)", color: "#fff", fontSize: "0.9rem", fontFamily: "inherit" }}
-              />
-            </div>
-            <div>
-              <label className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>State of Residence</label>
-              <input
-                type="text"
-                name="State"
-                placeholder="e.g. Texas"
-                className="w-full rounded-lg px-4 py-3 focus:outline-none"
-                style={{ background: "#0B1929", border: "1.5px solid rgba(201,168,76,0.3)", color: "#fff", fontSize: "0.9rem", fontFamily: "inherit" }}
-              />
-            </div>
-          </div>
-
-          {/* Health */}
-          <div>
-            <label className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>General Health Status</label>
-            <select
-              name="Health Status"
-              className="w-full rounded-lg px-4 py-3 focus:outline-none"
-              style={{ background: "#0B1929", border: "1.5px solid rgba(201,168,76,0.3)", color: "#fff", fontSize: "0.9rem", fontFamily: "inherit" }}
-            >
-              <option value="">Prefer not to say</option>
-              <option>Excellent — no major conditions</option>
-              <option>Good — minor conditions</option>
-              <option>Fair — managing a health condition</option>
-              <option>Poor — multiple conditions</option>
-            </select>
-          </div>
-
+          <div><label htmlFor="quote-state" className="block font-bold mb-1.5">State of Residence</label><input id="quote-state" name="State" type="text" maxLength={60} placeholder="e.g. Texas" className="w-full rounded-lg px-4 py-3" /></div>
           {/* Coverage Amount */}
           <div>
-            <label className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>Estimated Coverage Amount Needed</label>
+            <label htmlFor="Coverage Amount" className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>Estimated Coverage Amount Needed</label>
             <select
-              name="Coverage Amount"
+              id="Coverage Amount" name="Coverage Amount"
               className="w-full rounded-lg px-4 py-3 focus:outline-none"
               style={{ background: "#0B1929", border: "1.5px solid rgba(201,168,76,0.3)", color: "#fff", fontSize: "0.9rem", fontFamily: "inherit" }}
             >
@@ -149,11 +138,11 @@ export default function QuotePage() {
 
           {/* Message */}
           <div>
-            <label className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>Anything else we should know?</label>
+            <label htmlFor="Message" className="block font-bold mb-1.5 text-white" style={{ fontSize: "0.8rem" }}>Anything else we should know?</label>
             <textarea
-              name="Message"
+              id="Message" name="Message"
               rows={3}
-              placeholder="Tell us about your family situation, any questions, or specific coverage goals…"
+              placeholder="Share your coverage goals or best time to call. Please omit sensitive information."
               className="w-full rounded-lg px-4 py-3 focus:outline-none resize-none"
               style={{ background: "#0B1929", border: "1.5px solid rgba(201,168,76,0.3)", color: "#fff", fontSize: "0.9rem", fontFamily: "inherit" }}
             />
@@ -161,11 +150,16 @@ export default function QuotePage() {
 
           <button
             type="submit"
+            disabled={status === "sending"}
             className="w-full py-4 rounded-xl font-extrabold text-black mt-2 transition-all hover:opacity-90"
             style={{ background: "#C9A84C", fontSize: "1rem", letterSpacing: "0.05em" }}
           >
-            GET MY FREE QUOTE
+            {status === "sending" ? "SENDING…" : "GET MY FREE QUOTE"}
           </button>
+          <div aria-live="polite" role="status">
+            {status === "success" && <p>Thank you! Your request was submitted successfully. Pio will be in touch.</p>}
+            {status === "error" && <p role="alert">Your request could not be confirmed. Please try again, <a href="tel:2108705200">call (210) 870-5200</a>, or email piocarrillosfg@gmail.com.</p>}
+          </div>
           <p className="text-center text-[#64748B]" style={{ fontSize: "0.75rem" }}>
             No spam. No pressure. Pio will personally reach out within 24 hours.
           </p>
