@@ -81,6 +81,8 @@ export default function QuotePage() {
               <option>Term Life Insurance</option>
               <option>Whole Life Insurance</option>
               <option>Final Expense</option>
+              <option>Disability Income Protection</option>
+              <option>Critical Illness / Living Benefits</option>
               <option>Indexed Universal Life (IUL)</option>
               <option>Debt-Free Life</option>
               <option>Annuity / Retirement Income</option>
