@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   title: "The Carrillo Agency | Insurance & Financial Protection",
   description: "Independent insurance agency. Life insurance, final expense, mortgage protection, and debt-free life solutions for families across all 50 states.",
   icons: {
-    icon: "/icon-192.png",
+    icon: [{ url: "/icon-192.png?v=carrillo", type: "image/png", sizes: "192x192" }],
     apple: "/apple-touch-icon.png",
   },
 };
