@@ -338,7 +338,7 @@ We welcome people new to insurance and those with a sales background. If you are
 "Self-motivated with clear income goals",
 "Comfortable talking to and helping people",
 "Willing to obtain a life license (we guide you)",
-"Life & health license is a plus",
+"Life & health licensing recommended",
 "Some sales experience preferred but not required",
 "Part-time or full-time — you set your schedule",
 ].map((item) => (
@@ -406,8 +406,25 @@ style={{ border: "none", display: "block" }}
 </div>
 </section>
 
+
+<section className="py-24 px-6" aria-labelledby="join-faq-heading" style={{ background: "#f4ecdf" }}>
+<div className="max-w-3xl mx-auto">
+<h2 id="join-faq-heading" className="font-black mb-4" style={{ color: midnight, fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)" }}>Questions about getting started?</h2>
+<p className="mb-8" style={{ color: "#71645b", lineHeight: 1.7 }}>Explore what joining the Carrillo Agency could look like for you.</p>
+<div className="flex flex-col gap-3">
+{[["What do I need to get started?","Start by completing the interest form below. We will discuss your goals, availability, licensing status, and the costs of getting started. Bring a willingness to learn, follow through, and help families."],["Do I need to be licensed?","You can connect with us before you have a license. We recommend obtaining both life and health licenses to broaden your opportunities. You must hold the appropriate active license and required carrier appointments before selling insurance. Requirements vary by state."],["How long does licensing take?","For someone studying with full focus, completing exam preparation and taking the exam in less than a week may be achievable. A more flexible study schedule may take around one to two weeks. These are study goals, and your timeline depends on your pace, exam availability, state requirements, background checks, and application processing. License approval can take longer."],["Do I need insurance or sales experience?","We welcome new agents and experienced professionals. Sales experience can help, and coachability, consistent follow-up, and a commitment to learning are important as you develop your skills."],["Can I start part-time?","Yes. Part-time and full-time opportunities are available. We will discuss a realistic schedule for training, client conversations, and follow-up that fits your availability."],["What training and support are available?","You will have access to the training resources described above, along with team guidance. We will discuss how to get started with product education, client conversations, and the application process."],["What does it cost to get started?","Costs vary by state and business setup. They may include exam preparation, exam fees, fingerprinting, license applications, and business expenses such as leads and required coverage or tools. We will review applicable costs with you before you decide to move forward."],["How are agents paid, and are results guaranteed?","This is an independent agent opportunity. Compensation depends on your contracts, issued business, and applicable commission and chargeback terms. Results depend on individual effort, consistency, skills, follow-up, expenses, and market conditions. Earnings and success are not guaranteed."]].map(([question, answer]) => (
+<details key={question} className="rounded-xl border p-5" style={{ background: "#fffaf3", borderColor: "#dccdbb" }}>
+<summary className="cursor-pointer font-bold rounded focus-visible:outline-2 focus-visible:outline-offset-4" style={{ color: midnight, lineHeight: 1.5 }}>{question}</summary>
+<p className="mt-4" style={{ color: "#71645b", lineHeight: 1.8 }}>{answer}</p>
+</details>
+))}
+</div>
+<p className="mt-6 text-sm" style={{ color: "#71645b", lineHeight: 1.7 }}>For Texas licensing steps, visit the <a href="https://tdi.texas.gov/agent/general-life-apply.html" className="underline" style={{ color: royal }}>Texas Department of Insurance</a>. Applicants in other states should check their state insurance department.</p>
+</div>
+</section>
+
 {/* APPLY FORM */}
-<p className="join-results-note">Independent agent opportunity. Compensation, expenses, lead costs, and chargebacks depend on your contracts. Earnings and business results vary and are not guaranteed. Licensing and carrier appointments are required before selling insurance.</p>
+<p className="join-results-note">Independent agent opportunity. Compensation, expenses, lead costs, and chargebacks depend on your contracts. Agent results depend on individual effort, consistency, skills, follow-up, expenses, and market conditions. Earnings and business results vary and are not guaranteed. Licensing and carrier appointments are required before selling insurance.</p>
 <section id="apply" className="py-24 px-6" style={{ background: "#fffaf3" }}>
 <div className="max-w-2xl mx-auto">
 <div className="text-center mb-12">
