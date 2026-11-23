@@ -1,3 +1,4 @@
+import "./join.css";
 export default function Join() {
 const leadTypes = [
 { icon: "🏠", name: "Mortgage Protection" },
@@ -10,13 +11,13 @@ const leadTypes = [
 ];
 
 const products = [
-{ name: "Mortgage Protection", desc: "Protects mortgage payments in case of death, disability, or critical illness." },
+{ name: "Mortgage Protection", desc: "Life insurance that can help loved ones cover a mortgage after a covered death. Living benefits vary by policy." },
 { name: "Term Life", desc: "Designed to last a designated length of time — affordable and straightforward." },
-{ name: "Whole Life", desc: "Coverage that stays in force for life with guaranteed cash value growth." },
-{ name: "Final Expense", desc: "Covers any end-of-life expenses so families are never left with the burden." },
+{ name: "Whole Life", desc: "Permanent protection and contractual cash values when required premiums and policy conditions are met." },
+{ name: "Final Expense", desc: "A smaller life policy that can help beneficiaries manage funeral costs and other final bills." },
 { name: "Indexed Universal Life", desc: "Permanent coverage with a cash-value component tied to market index performance." },
-{ name: "Debt Free Life®", desc: "Harnesses life insurance coverage to eliminate debt and build lasting wealth." },
-{ name: "Annuities", desc: "Generates guaranteed income during retirement years." },
+{ name: "Debt Free Life®", desc: "Explore participating whole life as part of a broader debt repayment strategy, including costs and loan obligations." },
+{ name: "Annuities", desc: "Insurance contracts that may support retirement income, subject to contract terms and the issuing insurer." },
 ];
 
 const training = [
@@ -38,18 +39,18 @@ desc: "Agency Owners Academy, Leaders Summit, National Sales Conferences, and we
 {
 icon: "🏢",
 name: "Corporate Support Team",
-desc: "Over 200 dedicated corporate staff providing conservation services, marketing assistance, and back-office support.",
+desc: "Explore available conservation services, marketing resources, and back-office support.",
 },
 ];
 
-const midnight = "#011684";
-const royal = "#1004dd";
-const skyBlue = "#00b7ff";
-const yellow = "#ffcc00";
-const darkest = "#00185e";
+const midnight = "#485747";
+const royal = "#a9553b";
+const skyBlue = "#e5c99f";
+const yellow = "#e0b990";
+const darkest = "#343f34";
 
 return (
-<main style={{ background: "#fff", color: "#011684", fontFamily: "var(--font-montserrat), Arial, sans-serif" }}>
+<main id="main-content" className="agency-join" style={{ background: "#fffaf3", color: "#485747", fontFamily: "var(--font-montserrat), Arial, sans-serif" }}>
 
 {/* HERO */}
 <section className="relative flex items-center overflow-hidden" style={{ minHeight: "85vh", background: midnight }}>
@@ -67,7 +68,7 @@ style={{ opacity: 0.12 }}
 <div key={i} className="absolute"
 style={{
 width: "160px", height: "160px",
-border: `3px solid rgba(0,183,255,${0.06 + i * 0.03})`,
+border: `3px solid rgba(224,185,144,${0.06 + i * 0.03})`,
 transform: `rotate(45deg) translate(${i * 40}px, ${i * 40}px)`,
 top: "20%", right: `${-40 + i * 60}px`,
 }} />
@@ -86,7 +87,7 @@ Join the<br />
 </h1>
 <p className="mb-10 max-w-2xl leading-relaxed"
 style={{ fontSize: "1.1rem", fontWeight: 300, color: "rgba(255,255,255,0.82)" }}>
-The Carrillo Agency gives independent agents access to the industry&apos;s only value-based leads program, 80+ carrier contracts, best-in-class compensation, and true agency ownership — all on your schedule, from anywhere.
+Build an independent insurance business with guidance, training, carrier options, and a team to grow alongside. Start with a conversation about your goals and what working together could look like.
 </p>
 <div className="flex flex-col sm:flex-row gap-4">
 <a href="#apply"
@@ -108,10 +109,10 @@ Talk to Pio
 <section style={{ background: royal }}>
 <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
 {[
-{ value: "80+", label: "Insurance Carriers" },
-{ value: "5,000+", label: "Agents Nationwide" },
-{ value: "All 50", label: "States Licensed" },
-{ value: "200+", label: "Corporate Support Staff" },
+{ value: "Choice", label: "Carrier Options" },
+{ value: "Support", label: "Training & Guidance" },
+{ value: "Flexibility", label: "Plan Your Schedule" },
+{ value: "Growth", label: "Build Your Skills" },
 ].map(({ value, label }) => (
 <div key={label}>
 <p className="font-black text-white" style={{ fontSize: "2.4rem", fontWeight: 900 }}>{value}</p>
@@ -122,7 +123,7 @@ Talk to Pio
 </section>
 
 {/* FEATURED VIDEO — Get to Know SFG */}
-<section className="py-24 px-6" style={{ background: "#fff" }}>
+<section className="py-24 px-6" style={{ background: "#fffaf3" }}>
 <div className="max-w-5xl mx-auto">
 <div className="text-center mb-10">
 <p className="font-black uppercase tracking-widest mb-3" style={{ color: royal, fontSize: "0.7rem", letterSpacing: "0.2em" }}>
@@ -131,12 +132,13 @@ Watch Our Story
 <h2 className="font-black leading-tight mb-4" style={{ color: midnight, fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 900 }}>
 Get to Know Symmetry Financial Group
 </h2>
-<p style={{ color: "#4a5568", fontWeight: 300, fontSize: "1rem", maxWidth: "480px", margin: "0 auto" }}>
+<p style={{ color: "#71645b", fontWeight: 300, fontSize: "1rem", maxWidth: "480px", margin: "0 auto" }}>
 See why thousands of independent agents across all 50 states have chosen SFG to build their careers.
 </p>
 </div>
 <div className="rounded-2xl overflow-hidden shadow-xl" style={{ border: `2px solid ${royal}`, aspectRatio: "16/9" }}>
 <iframe
+loading="lazy"
 src="https://fast.wistia.net/embed/iframe/jtdq52cwj8?videoFoam=true"
 title="Get to Know Symmetry Financial Group (2024)"
 allowFullScreen
@@ -148,7 +150,7 @@ style={{ border: "none", display: "block" }}
 </section>
 
 {/* VALUE PROPOSITIONS */}
-<section className="py-24 px-6" style={{ background: "#fff" }}>
+<section className="py-24 px-6" style={{ background: "#fffaf3" }}>
 <div className="max-w-7xl mx-auto">
 <div className="text-center mb-16">
 <p className="font-black uppercase tracking-widest mb-3" style={{ color: royal, fontSize: "0.7rem", letterSpacing: "0.2em" }}>
@@ -157,7 +159,7 @@ Why Symmetry Financial Group
 <h2 className="font-black leading-tight mb-4" style={{ color: midnight, fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 900 }}>
 Experience the<br />Symmetry Difference.
 </h2>
-<p style={{ color: "#4a5568", fontWeight: 300, fontSize: "1.05rem", maxWidth: "500px", margin: "0 auto" }}>
+<p style={{ color: "#71645b", fontWeight: 300, fontSize: "1.05rem", maxWidth: "500px", margin: "0 auto" }}>
 Everything you need to build a real, lasting business in life insurance.
 </p>
 </div>
@@ -167,20 +169,20 @@ Everything you need to build a real, lasting business in life insurance.
 {
 num: "01",
 title: "Value-Based Leads",
-sub: "The industry's only value-based leads program",
-desc: "Access Quility LeadStream — verified, TCPA-compliant leads across 7+ product types. Agents average a 3.5x return on their lead investment.",
+sub: "Options to support your outreach",
+desc: "Explore available lead options, costs, and follow-up practices. We’ll discuss what fits your market and budget.",
 },
 {
 num: "02",
 title: "Compensation & Bonuses",
-sub: "Best-in-class compensation",
-desc: "Top-tier commission levels from day one with performance bonuses. Full transparency — what you earn is what you keep.",
+sub: "Understand your contract",
+desc: "Review carrier contracts, commission schedules, bonus qualifications, and chargeback responsibilities before getting started.",
 },
 {
 num: "03",
 title: "True Agency Ownership",
-sub: "Passive income opportunities",
-desc: "Build your own agency. Earn overrides, create passive income streams, and build real equity — not just a paycheck.",
+sub: "A business you can develop",
+desc: "Learn about agency-building opportunities, leadership responsibilities, and how compensation depends on contracts and production.",
 },
 {
 num: "04",
@@ -190,11 +192,11 @@ desc: "Summit platform, Quility U, live conferences, CRM tools, digital applicat
 },
 ].map(({ num, title, sub, desc }) => (
 <div key={num} className="flex flex-col p-8 rounded-2xl border transition-all hover:-translate-y-1"
-style={{ borderColor: "#e2e8f0", background: "#fafbff", boxShadow: "0 2px 12px rgba(1,22,132,0.05)" }}>
+style={{ borderColor: "#e2e8f0", background: "#fffaf3", boxShadow: "0 2px 12px rgba(72,87,71,0.05)" }}>
 <p className="font-black mb-4" style={{ color: midnight, fontSize: "2rem", fontWeight: 900, opacity: 0.12 }}>{num}</p>
 <h3 className="font-black mb-1" style={{ color: midnight, fontSize: "1.05rem", fontWeight: 900 }}>{title}</h3>
 <p className="font-black uppercase tracking-wider mb-3" style={{ color: skyBlue, fontSize: "0.58rem", fontWeight: 900, letterSpacing: "0.15em" }}>{sub}</p>
-<p style={{ color: "#4a5568", fontWeight: 300, fontSize: "0.88rem", lineHeight: "1.65" }}>{desc}</p>
+<p style={{ color: "#71645b", fontWeight: 300, fontSize: "0.88rem", lineHeight: "1.65" }}>{desc}</p>
 </div>
 ))}
 </div>
@@ -214,10 +216,10 @@ A Leads Program<br />Built for Agents,<br />
 <span style={{ color: yellow }}>by Agents.</span>
 </h2>
 <p className="mb-4 leading-relaxed" style={{ color: "rgba(255,255,255,0.75)", fontWeight: 300, fontSize: "1rem" }}>
-Stop chasing cold contacts. Quility LeadStream delivers verified, TCPA-compliant prospects in real time — fully customizable by type, source, and geography.
+Explore lead options by product, geography, and budget. Build consistent follow-up habits and understand the rules that apply to contacting prospective clients.
 </p>
 <p className="mb-8 leading-relaxed" style={{ color: "rgba(255,255,255,0.75)", fontWeight: 300, fontSize: "1rem" }}>
-Symmetry agents average a <span className="font-black text-white">3.5x or greater return</span> on their lead investment. The more you invest, the more you grow.
+Lead purchases are a business expense. Results vary with your market, activity, skills, and follow-up; a return on your spending is not guaranteed.
 </p>
 <a href="#apply"
 className="inline-block px-8 py-4 rounded-lg text-black transition-all hover:opacity-90"
@@ -228,7 +230,7 @@ GET ACCESS TO LEADS
 <div className="grid grid-cols-2 gap-3">
 {leadTypes.map(({ icon, name }) => (
 <div key={name} className="flex items-center gap-3 px-5 py-4 rounded-xl"
-style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(0,183,255,0.2)" }}>
+style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(224,185,144,0.2)" }}>
 <span className="text-2xl">{icon}</span>
 <span className="font-bold text-white" style={{ fontSize: "0.85rem", fontWeight: 700 }}>{name}</span>
 </div>
@@ -237,8 +239,9 @@ style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(0,183,255
 </div>
 
 {/* Leads video */}
-<div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(0,183,255,0.25)", aspectRatio: "16/9" }}>
+<div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(224,185,144,0.25)", aspectRatio: "16/9" }}>
 <iframe
+loading="lazy"
 src="https://fast.wistia.net/embed/iframe/f1r12pibj7?videoFoam=true"
 title="Own Your Career | Effective Leads"
 allowFullScreen
@@ -253,7 +256,7 @@ Own Your Career | Effective Leads
 </section>
 
 {/* TRAINING */}
-<section className="py-24 px-6" style={{ background: "#fff" }}>
+<section className="py-24 px-6" style={{ background: "#fffaf3" }}>
 <div className="max-w-7xl mx-auto">
 <div className="text-center mb-16">
 <p className="font-black uppercase tracking-widest mb-3" style={{ color: royal, fontSize: "0.7rem", letterSpacing: "0.2em" }}>
@@ -262,18 +265,18 @@ Training + Support
 <h2 className="font-black leading-tight mb-4" style={{ color: midnight, fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 900 }}>
 You&apos;re Never<br />Building Alone.
 </h2>
-<p style={{ color: "#4a5568", fontWeight: 300, fontSize: "1.05rem", maxWidth: "480px", margin: "0 auto" }}>
-In-person events, webinars, digital courses, and 200+ corporate staff — all dedicated to your success.
+<p style={{ color: "#71645b", fontWeight: 300, fontSize: "1.05rem", maxWidth: "480px", margin: "0 auto" }}>
+Build your skills through digital courses, team conversations, webinars, and available in-person events.
 </p>
 </div>
 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 {training.map(({ icon, name, desc }) => (
 <div key={name} className="flex gap-6 p-8 rounded-2xl"
-style={{ background: "#fafbff", border: "1px solid #e2e8f0", boxShadow: "0 2px 12px rgba(1,22,132,0.05)" }}>
+style={{ background: "#fffaf3", border: "1px solid #e2e8f0", boxShadow: "0 2px 12px rgba(72,87,71,0.05)" }}>
 <div className="text-4xl shrink-0">{icon}</div>
 <div>
 <h3 className="font-black mb-2" style={{ color: midnight, fontSize: "1.05rem", fontWeight: 900 }}>{name}</h3>
-<p style={{ color: "#4a5568", fontWeight: 300, fontSize: "0.88rem", lineHeight: "1.65" }}>{desc}</p>
+<p style={{ color: "#71645b", fontWeight: 300, fontSize: "0.88rem", lineHeight: "1.65" }}>{desc}</p>
 </div>
 </div>
 ))}
@@ -289,10 +292,10 @@ style={{ background: "#fafbff", border: "1px solid #e2e8f0", boxShadow: "0 2px 1
 Carriers + Products
 </p>
 <h2 className="font-black leading-tight mb-4 text-white" style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 900 }}>
-80+ Carriers.<br />Every Product Your Clients Need.
+More Options.<br />Thoughtful Client Recommendations.
 </h2>
 <p style={{ color: "rgba(255,255,255,0.75)", fontWeight: 300, fontSize: "1.05rem", maxWidth: "520px", margin: "0 auto" }}>
-Access a wide range of products — many exclusive to Symmetry — through one of the largest carrier networks in the industry.
+Explore multiple carriers and coverage types. Product availability depends on your appointments, licensing, and the client’s state and eligibility.
 </p>
 </div>
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
@@ -306,7 +309,7 @@ style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,2
 ))}
 </div>
 <div className="flex flex-wrap gap-3 justify-center">
-{["Mutual of Omaha", "Foresters", "F&G", "SBLI", "American Amicable", "Americo", "Banner Life", "Corebridge", "Transamerica", "Gerber Life", "United Home Life", "+ 70 More Carriers"].map((c) => (
+{["Mutual of Omaha", "Foresters", "F&G", "SBLI", "American Amicable", "Americo", "Banner Life", "Corebridge", "Transamerica", "Gerber Life", "United Home Life", "Additional carrier options"].map((c) => (
 <span key={c} className="px-4 py-2 rounded-full font-bold text-sm"
 style={{ background: "rgba(255,255,255,0.1)", color: "#fff", border: "1px solid rgba(255,255,255,0.25)", fontWeight: 700 }}>
 {c}
@@ -352,7 +355,7 @@ src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80"
 alt="Happy team working on laptops in modern office"
 className="w-full h-full object-cover"
 />
-<div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 40%, rgba(1,22,132,0.92) 100%)" }} />
+<div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 40%, rgba(72,87,71,0.92) 100%)" }} />
 <div className="absolute bottom-0 left-0 right-0 p-8">
 <p className="font-black text-white" style={{ fontSize: "1.5rem", fontWeight: 900 }}>Build Your Business.</p>
 <p className="font-bold" style={{ color: yellow, fontSize: "1rem", fontWeight: 700 }}>The Carrillo Agency · Powered by Symmetry Financial Group</p>
@@ -362,16 +365,16 @@ className="w-full h-full object-cover"
 </section>
 
 {/* VIDEO GALLERY — Recruiting */}
-<section className="py-24 px-6" style={{ background: "#fff" }}>
+<section className="py-24 px-6" style={{ background: "#fffaf3" }}>
 <div className="max-w-7xl mx-auto">
 <div className="text-center mb-14">
 <p className="font-black uppercase tracking-widest mb-3" style={{ color: royal, fontSize: "0.7rem", letterSpacing: "0.2em" }}>
 Hear From Our Agents
 </p>
 <h2 className="font-black leading-tight mb-4" style={{ color: midnight, fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 900 }}>
-Real Stories. Real Results.
+Perspectives From the Field.
 </h2>
-<p style={{ color: "#4a5568", fontWeight: 300, fontSize: "1rem", maxWidth: "460px", margin: "0 auto" }}>
+<p style={{ color: "#71645b", fontWeight: 300, fontSize: "1rem", maxWidth: "460px", margin: "0 auto" }}>
 See how agents across the country are building careers and changing their lives with Symmetry Financial Group.
 </p>
 </div>
@@ -383,8 +386,9 @@ See how agents across the country are building careers and changing their lives 
 { id: "8h11tc1dyc", title: "Living Your Legacy", duration: "3:20" },
 ].map(({ id, title, duration }) => (
 <div key={id}>
-<div className="rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0", aspectRatio: "16/9", boxShadow: "0 4px 20px rgba(1,22,132,0.08)" }}>
+<div className="rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0", aspectRatio: "16/9", boxShadow: "0 4px 20px rgba(72,87,71,0.08)" }}>
 <iframe
+loading="lazy"
 src={`https://fast.wistia.net/embed/iframe/${id}?videoFoam=true`}
 title={title}
 allowFullScreen
@@ -403,7 +407,8 @@ style={{ border: "none", display: "block" }}
 </section>
 
 {/* APPLY FORM */}
-<section id="apply" className="py-24 px-6" style={{ background: "#fafbff" }}>
+<p className="join-results-note">Independent agent opportunity. Compensation, expenses, lead costs, and chargebacks depend on your contracts. Earnings and business results vary and are not guaranteed. Licensing and carrier appointments are required before selling insurance.</p>
+<section id="apply" className="py-24 px-6" style={{ background: "#fffaf3" }}>
 <div className="max-w-2xl mx-auto">
 <div className="text-center mb-12">
 <p className="font-black uppercase tracking-widest mb-3" style={{ color: royal, fontSize: "0.7rem", letterSpacing: "0.2em" }}>
@@ -415,7 +420,7 @@ Join the Carrillo Agency
 <p className="font-black uppercase tracking-widest" style={{ color: royal, fontSize: "0.65rem", letterSpacing: "0.2em" }}>
 Powered by Symmetry Financial Group
 </p>
-<p style={{ color: "#4a5568", fontWeight: 300, fontSize: "1rem" }}>
+<p style={{ color: "#71645b", fontWeight: 300, fontSize: "1rem" }}>
 Fill out the form and Pio will personally reach out within 24 hours.
 </p>
 </div>
@@ -424,7 +429,7 @@ Fill out the form and Pio will personally reach out within 24 hours.
 action="https://api.web3forms.com/submit"
 method="POST"
 className="flex flex-col gap-5 rounded-2xl p-8"
-style={{ background: "#fafbff", border: "1.5px solid #e2e8f0", boxShadow: "0 4px 32px rgba(1,22,132,0.08)" }}
+style={{ background: "#fffaf3", border: "1.5px solid #e2e8f0", boxShadow: "0 4px 32px rgba(72,87,71,0.08)" }}
 >
 <input type="hidden" name="access_key" value="989cce7b-565a-4ac2-b007-505e8848316c" />
 <input type="hidden" name="subject" value="New Agent Application — Carrillo Agency" />
@@ -434,38 +439,38 @@ style={{ background: "#fafbff", border: "1.5px solid #e2e8f0", boxShadow: "0 4px
 { label: "Last Name", name: "Last Name", placeholder: "Doe" },
 ].map(({ label, name, placeholder }) => (
 <div key={name}>
-<label className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>{label}</label>
-<input type="text" name={name} required placeholder={placeholder}
+<label htmlFor={name} className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>{label}</label>
+<input id={name} type="text" name={name} required placeholder={placeholder}
 className="w-full rounded-lg px-4 py-3 focus:outline-none"
-style={{ background: "#fff", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }} />
+style={{ background: "#fffaf3", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }} />
 </div>
 ))}
 </div>
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
 <div>
-<label className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>Phone Number</label>
-<input type="tel" name="Phone" required placeholder="(210) 000-0000"
+<label htmlFor="join-Phone" className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>Phone Number</label>
+<input type="tel" id="join-Phone" name="Phone" required placeholder="(210) 000-0000"
 className="w-full rounded-lg px-4 py-3 focus:outline-none"
-style={{ background: "#fff", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }} />
+style={{ background: "#fffaf3", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }} />
 </div>
 <div>
-<label className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>Email Address</label>
-<input type="email" name="Email" required placeholder="john@email.com"
+<label htmlFor="join-Email" className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>Email Address</label>
+<input type="email" id="join-Email" name="email" required placeholder="john@email.com"
 className="w-full rounded-lg px-4 py-3 focus:outline-none"
-style={{ background: "#fff", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }} />
+style={{ background: "#fffaf3", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }} />
 </div>
 </div>
 <div>
-<label className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>State</label>
-<input type="text" name="State" placeholder="Texas"
+<label htmlFor="join-State" className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>State</label>
+<input type="text" id="join-State" name="State" placeholder="Texas"
 className="w-full rounded-lg px-4 py-3 focus:outline-none"
-style={{ background: "#fff", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }} />
+style={{ background: "#fffaf3", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }} />
 </div>
 <div>
-<label className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>License Status</label>
-<select name="License"
+<label htmlFor="join-License" className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>License Status</label>
+<select id="join-License" name="License"
 className="w-full rounded-lg px-4 py-3 focus:outline-none"
-style={{ background: "#fff", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }}>
+style={{ background: "#fffaf3", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }}>
 <option>No license yet — I need guidance</option>
 <option>Life license — active</option>
 <option>Life & Health license — active</option>
@@ -473,10 +478,10 @@ style={{ background: "#fff", border: "1.5px solid #d1d5db", color: midnight, fon
 </select>
 </div>
 <div>
-<label className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>Sales or Insurance Experience</label>
-<select name="Experience"
+<label htmlFor="join-Experience" className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>Sales or Insurance Experience</label>
+<select id="join-Experience" name="Experience"
 className="w-full rounded-lg px-4 py-3 focus:outline-none"
-style={{ background: "#fff", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }}>
+style={{ background: "#fffaf3", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }}>
 <option>No experience — brand new</option>
 <option>Some sales experience</option>
 <option>Insurance experience</option>
@@ -484,11 +489,11 @@ style={{ background: "#fff", border: "1.5px solid #d1d5db", color: midnight, fon
 </select>
 </div>
 <div>
-<label className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>Tell us about your goals</label>
-<textarea name="Goals" rows={4}
+<label htmlFor="join-Goals" className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>Tell us about your goals</label>
+<textarea id="join-Goals" name="Goals" rows={4}
 placeholder="What are you looking to build? Why are you interested in joining The Carrillo Agency?"
 className="w-full rounded-lg px-4 py-3 focus:outline-none resize-none"
-style={{ background: "#fff", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }} />
+style={{ background: "#fffaf3", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }} />
 </div>
 <button type="submit"
 className="w-full py-4 rounded-xl text-black mt-2 transition-all hover:opacity-90"
