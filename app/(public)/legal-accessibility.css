@@ -16,3 +16,5 @@
 .privacy-video button,.carrier-pause{background:#485747;color:#fffaf3;border:1px solid #485747;border-radius:6px;padding:10px 16px;font:inherit;cursor:pointer;margin:8px}
 .privacy-video a{font-size:12px;text-decoration:underline;color:#90452f}
 .carrier-pause{display:block;margin:0 16px 16px auto;font-size:13px}
+
+.public-refresh main.agency-join:has(form) .join-dark p{color:#fffaf3!important}
