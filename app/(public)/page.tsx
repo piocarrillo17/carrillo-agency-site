@@ -12,7 +12,7 @@ const topics = [
   { icon: Wallet, title: "Build a debt repayment plan", text: "Understand the role, costs, and limits of using participating whole life alongside debt repayment.", href: "/learn#whole-life-debt", tag: "Debt repayment" },
   { icon: BriefcaseMedical, title: "Protect your paycheck", text: "Learn how disability income coverage can help when a covered illness or injury keeps you from working.", href: "/learn#disability", tag: "Disability protection" },
   { icon: HeartPulse, title: "Make room for recovery", text: "Understand critical illness coverage and how it differs from life insurance living benefit riders.", href: "/learn#critical-illness", tag: "Critical illness" },
-  { icon: Sunset, title: "Look ahead with clarity", text: "Explore annuity basics, retirement income options, and the details to check before committing.", href: "/learn#retirement", tag: "Retirement solutions" },
+  { icon: Sunset, title: "Look ahead with clarity", text: "Explore annuity basics, retirement income options, and the details to check before committing.", href: "/retirement", tag: "Retirement solutions" },
 ];
 export default function Home() {
   return <main className="agency-home" id="main-content">
