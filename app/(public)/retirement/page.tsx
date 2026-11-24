@@ -1,3 +1,4 @@
+import RetirementGraph from "@/components/RetirementGraph";
 import type { Metadata } from "next";
 import Link from "next/link";
 import CoveragePhoto from "@/components/CoveragePhoto";
@@ -31,6 +32,7 @@ export default function RetirementPage() {
         <p className="agency-lead">Explore how annuities could support your retirement income, with clear explanations of the benefits, costs, and commitments.</p>
         <div className="agency-actions"><Link href="/quote" className="agency-button">Talk retirement with Pio →</Link><a href="#retirement-faq" className="agency-text-link">Read common questions ↓</a></div>
       </header>
+      <RetirementGraph />
       <section className="agency-wrap agency-guide">
         <div><h2>Start with your life<br />after work.</h2><CoveragePhoto topic="retirement" /></div>
         <div><p className="agency-lead">Your retirement plan starts with how you want to live and what your income needs to cover.</p><p>Consider your current resources, your comfort with risk, and how long your savings may need to last. We can discuss insurance options in the context of those goals and explain the specific terms before you make a decision.</p><aside className="agency-note"><strong>A contract worth understanding</strong><p>Annuities are long-term insurance contracts. Guarantees depend on the issuing insurer’s claims-paying ability and the contract terms.</p></aside></div>
