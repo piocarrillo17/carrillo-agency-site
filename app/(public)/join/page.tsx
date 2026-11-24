@@ -1,3 +1,4 @@
+import PrivacyVideo from "@/components/PrivacyVideo";
 import ContactNotice from "@/components/ContactNotice";
 import "./join.css";
 export default function Join() {
@@ -138,14 +139,7 @@ See why thousands of independent agents across all 50 states have chosen SFG to 
 </p>
 </div>
 <div className="rounded-2xl overflow-hidden shadow-xl" style={{ border: `2px solid ${royal}`, aspectRatio: "16/9" }}>
-<iframe
-loading="lazy"
-src="https://fast.wistia.net/embed/iframe/jtdq52cwj8?videoFoam=true"
-title="Get to Know Symmetry Financial Group (2024)"
-allowFullScreen
-className="w-full h-full"
-style={{ border: "none", display: "block" }}
-/>
+<PrivacyVideo videoId="jtdq52cwj8" title="Get to Know Symmetry Financial Group (2024)" />
 </div>
 </div>
 </section>
@@ -196,7 +190,7 @@ desc: "Summit platform, Quility U, live conferences, CRM tools, digital applicat
 style={{ borderColor: "#e2e8f0", background: "#fffaf3", boxShadow: "0 2px 12px rgba(72,87,71,0.05)" }}>
 <p className="font-black mb-4" style={{ color: midnight, fontSize: "2rem", fontWeight: 900, opacity: 0.12 }}>{num}</p>
 <h3 className="font-black mb-1" style={{ color: midnight, fontSize: "1.05rem", fontWeight: 900 }}>{title}</h3>
-<p className="font-black uppercase tracking-wider mb-3" style={{ color: skyBlue, fontSize: "0.58rem", fontWeight: 900, letterSpacing: "0.15em" }}>{sub}</p>
+<p className="font-black uppercase tracking-wider mb-3" style={{ color: "#79513b", fontSize: "0.58rem", fontWeight: 900, letterSpacing: "0.15em" }}>{sub}</p>
 <p style={{ color: "#71645b", fontWeight: 300, fontSize: "0.88rem", lineHeight: "1.65" }}>{desc}</p>
 </div>
 ))}
@@ -241,14 +235,7 @@ style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(224,185,1
 
 {/* Leads video */}
 <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(224,185,144,0.25)", aspectRatio: "16/9" }}>
-<iframe
-loading="lazy"
-src="https://fast.wistia.net/embed/iframe/f1r12pibj7?videoFoam=true"
-title="Own Your Career | Effective Leads"
-allowFullScreen
-className="w-full h-full"
-style={{ border: "none", display: "block" }}
-/>
+<PrivacyVideo videoId="f1r12pibj7" title="Own Your Career | Effective Leads" />
 </div>
 <p className="text-center mt-4 font-bold uppercase tracking-widest" style={{ color: skyBlue, fontSize: "0.65rem", letterSpacing: "0.18em" }}>
 Own Your Career | Effective Leads
@@ -289,7 +276,7 @@ style={{ background: "#fffaf3", border: "1px solid #e2e8f0", boxShadow: "0 2px 1
 <section className="py-24 px-6" style={{ background: royal }}>
 <div className="max-w-7xl mx-auto">
 <div className="text-center mb-16">
-<p className="font-black uppercase tracking-widest mb-3" style={{ color: yellow, fontSize: "0.7rem", letterSpacing: "0.2em" }}>
+<p className="font-black uppercase tracking-widest mb-3" style={{ color: "#fffaf3", fontSize: "0.7rem", letterSpacing: "0.2em" }}>
 Carriers + Products
 </p>
 <h2 className="font-black leading-tight mb-4 text-white" style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 900 }}>
@@ -359,7 +346,7 @@ className="w-full h-full object-cover"
 <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent 40%, rgba(72,87,71,0.92) 100%)" }} />
 <div className="absolute bottom-0 left-0 right-0 p-8">
 <p className="font-black text-white" style={{ fontSize: "1.5rem", fontWeight: 900 }}>Build Your Business.</p>
-<p className="font-bold" style={{ color: yellow, fontSize: "1rem", fontWeight: 700 }}>The Carrillo Agency · Powered by Symmetry Financial Group</p>
+<p className="font-bold" style={{ color: "#f7dfbf", fontSize: "1rem", fontWeight: 700 }}>The Carrillo Agency · Powered by Symmetry Financial Group</p>
 </div>
 </div>
 </div>
@@ -389,18 +376,11 @@ See how agents across the country are building careers and changing their lives 
 ].map(({ id, title, duration }) => (
 <div key={id}>
 <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid #e2e8f0", aspectRatio: "16/9", boxShadow: "0 4px 20px rgba(72,87,71,0.08)" }}>
-<iframe
-loading="lazy"
-src={`https://fast.wistia.net/embed/iframe/${id}?videoFoam=true`}
-title={title}
-allowFullScreen
-className="w-full h-full"
-style={{ border: "none", display: "block" }}
-/>
+<PrivacyVideo videoId={id} title={title} />
 </div>
 <div className="mt-3 flex items-center justify-between px-1">
 <p className="font-black" style={{ color: midnight, fontSize: "0.9rem", fontWeight: 900 }}>{title}</p>
-<p className="font-bold" style={{ color: skyBlue, fontSize: "0.75rem", fontWeight: 700 }}>{duration}</p>
+<p className="font-bold" style={{ color: "#79513b", fontSize: "0.75rem", fontWeight: 700 }}>{duration}</p>
 </div>
 </div>
 ))}
@@ -452,13 +432,14 @@ style={{ background: "#fffaf3", border: "1.5px solid #e2e8f0", boxShadow: "0 4px
 >
 <input type="hidden" name="access_key" value="989cce7b-565a-4ac2-b007-505e8848316c" />
 <input type="hidden" name="subject" value="New Agent Application — Carrillo Agency" />
+<input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
 {[
 { label: "First Name", name: "First Name", placeholder: "John" },
 { label: "Last Name", name: "Last Name", placeholder: "Doe" },
 ].map(({ label, name, placeholder }) => (
 <div key={name}>
-<label htmlFor={name} className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>{label}</label>
+<label htmlFor={name} className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>{label} (required)</label>
 <input id={name} type="text" name={name} required placeholder={placeholder}
 className="w-full rounded-lg px-4 py-3 focus:outline-none"
 style={{ background: "#fffaf3", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }} />
@@ -467,13 +448,13 @@ style={{ background: "#fffaf3", border: "1.5px solid #d1d5db", color: midnight, 
 </div>
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
 <div>
-<label htmlFor="join-Phone" className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>Phone Number</label>
+<label htmlFor="join-Phone" className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>Phone Number (required)</label>
 <input type="tel" id="join-Phone" name="Phone" required placeholder="(210) 000-0000"
 className="w-full rounded-lg px-4 py-3 focus:outline-none"
 style={{ background: "#fffaf3", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }} />
 </div>
 <div>
-<label htmlFor="join-Email" className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>Email Address</label>
+<label htmlFor="join-Email" className="block font-bold mb-1.5" style={{ color: midnight, fontSize: "0.8rem", fontWeight: 700 }}>Email Address (required)</label>
 <input type="email" id="join-Email" name="email" required placeholder="john@email.com"
 className="w-full rounded-lg px-4 py-3 focus:outline-none"
 style={{ background: "#fffaf3", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }} />
@@ -520,7 +501,7 @@ className="w-full py-4 rounded-xl text-black mt-2 transition-all hover:opacity-9
 style={{ background: yellow, fontWeight: 900, fontSize: "0.9rem", letterSpacing: "0.08em" }}>
 SUBMIT MY APPLICATION
 </button>
-<p className="text-center" style={{ color: "#94a3b8", fontSize: "0.75rem", fontWeight: 300 }}>
+<p className="text-center" style={{ color: "#71645b", fontSize: "0.75rem", fontWeight: 300 }}>
 Pio will follow up using your preferred contact method.
 </p>
 </form>

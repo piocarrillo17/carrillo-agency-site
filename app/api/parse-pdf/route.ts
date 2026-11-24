@@ -1,3 +1,4 @@
+import { requireAgent } from "@/lib/requireAgent";
 import { NextRequest, NextResponse } from 'next/server'
 
 export const runtime = 'nodejs'
@@ -17,24 +18,21 @@ const grab = (t: string, patterns: RegExp[]): string => {
   return ''
 }
 
-// A real person's name = alpha words, no digits, no street suffixes.
-// Used for the unlabeled address-block heuristic where false positives matter.
+
 const looksLikeName = (s: string) => !!s &&
   !/\d/.test(s) &&
   !/\b(St|Ave|Dr|Rd|Blvd|Ln|Way|Ct|Pl|Cir|Trail|Drive|Street|Road|Lane|Apt|Unit|Suite)\b/i.test(s) &&
   /^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'.\- ]+[A-Za-zÀ-ÿ]$/.test(s.trim())
 
-// Relaxed validator for names that came from an explicit label (First/Last Name,
-// Client Name, Dear <name>, Name:). These are trustworthy, so we DON'T reject on
-// street-suffix words — otherwise a real surname like "Lane" gets dropped.
+
+
 const validName = (s: string) => {
   const n = (s || '').trim()
   return !!n && !/\d/.test(n) && n.split(/\s+/).length <= 4 &&
     /^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ''.\- ]{1,38}[A-Za-zÀ-ÿ.]$/.test(n)
 }
 
-// SFG CRM lead PDFs: unpdf extracts text with VALUE before LABEL on each line
-// e.g. "AmeliaFirst Name:" "303 Comal DrProperty Address:" "$251,363.00Mortgage Amount:"
+
 function parseSFGCRM(t: string): ParsedLead | null {
   const g = (patterns: RegExp[]) => { for (const p of patterns) { const m = t.match(p); if (m?.[1]) return m[1].trim() } return '' }
   const first = g([/\n([A-Za-z'\-]+)\s*First Name:?/i])
@@ -53,11 +51,9 @@ function parseSFGCRM(t: string): ParsedLead | null {
   const mortgage_balance = g([/\n(\$[\d,]+(?:\.\d{2})?)\s*Mortgage Amount:?/i])
   const lender           = g([/\n([A-Za-z][^\n]+?)\s*Lender Name:?/i])
 
-  // Age sits on its own line between Caller ID and Purchase Amount/Age label
   const ageStr = g([/(\d{2,3})\n[^\n]*\nAge:?/i])
   const age = ageStr ? parseInt(ageStr) : null
 
-  // Q&A section uses normal "label: value" order
   const gRaw     = g([/gender\??:?\s*(Male|Female)/i])
   const gender   = gRaw ? (gRaw.toLowerCase() === 'male' ? 'Male' : 'Female') : ''
   const tobMatch = t.match(/tobacco[^\n]*?:\s*(Yes|No|Y|N)/i)
@@ -69,20 +65,17 @@ function parseSFGCRM(t: string): ParsedLead | null {
   return { name: name || 'Unknown', phone, email: '', address, city, state, zip, dob: '', age, gender, tobacco_use, co_borrower, mortgage_balance, lender, source: 'Call In' }
 }
 
-// Parse one page (unpdf format: label and value on the same line)
 function parsePage(t: string): ParsedLead | null {
   if (t.trim().length < 80) return null
 
-  // SFG CRM lead PDFs have a distinct "CUSTOMER REQUEST" header — use dedicated parser
   if (/CUSTOMER REQUEST|Caller ID:|Contact Phone:/i.test(t)) return parseSFGCRM(t)
 
-  // Name: "First Name X" + "Last Name Y" (postcard) OR "Client Name Full Name" (Quility/Digital Lighthouse)
   const first = grab(t, [/First Name[:\s]+([A-Za-zÀ-ÿ'\-]+)/i])
   const last = grab(t, [/Last Name[:\s]+([A-Za-zÀ-ÿ'\-]+)/i])
   let name = (first && last) ? `${first} ${last}`.trim() : ''
   if (!validName(name)) {
-    // Quility "Client Name ... Gender"; LeadPros "Name: <Name>"; mail-in "Dear <Name>,"
-    // Note: \bName: must NOT consume a newline in \s* or it grabs the next section header
+
+
     name = grab(t, [
       /Client Name[:\s]+([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'\-]+(?:\s+[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'\-]+){1,2}?)\s+(?:Gender|Protection|Client Age)/i,
       /\bName:[^\S\n]*([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ''.\- ]+?)[^\S\n]*(?:\n|Age\b)/i,
@@ -90,8 +83,8 @@ function parsePage(t: string): ParsedLead | null {
     ])
     if (!validName(name)) name = ''
   }
-  // Last resort (garbled mailers): the printed name sits on its own line directly
-  // above the street address, e.g. "Claudia Tabares\n5116 Nicholas Ct".
+
+
   let blkStreet = ''
   if (!name) {
     const re = /([A-Z][A-Za-zÀ-ÿ''.\-]+(?:[ \t]+(?:[A-Z]\.?[ \t])?[A-Z][A-Za-zÀ-ÿ''.\-]+){1,3})[ \t]*\n[ \t]*(\d{1,6}[A-Za-z]?[ \t]+[A-Za-z][^\n]{2,40})/g
@@ -100,14 +93,13 @@ function parsePage(t: string): ParsedLead | null {
     }
   }
 
-  // Phone: prefer bare 10-digit Caller ID (SFG CRM), then labeled phone fields
   let phone = grab(t, [
     /Caller ID[:\s]+(\d{10})\b/i,
     /(?:Contact Phone|Primary Phone|Phone Number)[:\s]+([\d\-().\s]{7,16})/i,
     /(\(\d{3}\)[-.\s]?\d{3}[-.\s]?\d{4})/,
     /\bPhone:\s*(\d{10})\b/i,
   ]).trim()
-  // Normalize: strip non-digits, drop leading 1 from 11-digit numbers, format as (NXX) NXX-XXXX
+
   const phoneDigits = phone.replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '')
   if (phoneDigits.length === 10) phone = `(${phoneDigits.slice(0, 3)}) ${phoneDigits.slice(3, 6)}-${phoneDigits.slice(6)}`
 
@@ -115,15 +107,15 @@ function parsePage(t: string): ParsedLead | null {
   let address = grab(t, [/(?:Property Address|Street Address)[:\s]+(.+?)\s+(?:Primary Phone|Caller ID|City)/i])
   let city = grab(t, [/\bCity[:\s]+([A-Za-z][A-Za-z .'\-]*?)\s*(?:\n|Age|County|State)/i])
   let state = grab(t, [/\bState[:\s]+([A-Z]{2})\b/i]).toUpperCase()
-  // Reject false positives like "800 S State St" → "St"; only keep real US states.
+
   if (!US_STATES.has(state)) state = ''
   let zip = grab(t, [/(?:Postal Code|Zip Code)[:\s]+(\d{5})/i])
-  // Mail-in combined address line: "<street>, <city>, ST 12345"
+
   if (!city || !zip || !address) {
     const m = t.match(/(\d+\s+[A-Za-z][^,\n]+?),\s*([A-Za-z][A-Za-z .'\-]+?),\s*([A-Z]{2})\s+(\d{5})/)
     if (m) { address = address || m[1]; city = city || m[2]; state = state || m[3]; zip = zip || m[4] }
   }
-  // LeadPros / postcard block: "<City>, ST 12345" on its own line (street is separate)
+
   if (!city || !state || !zip) {
     const m = t.match(/\n\s*([A-Za-z][A-Za-z .'\-]+?),\s*([A-Z]{2})\s+(\d{5})(?:-\d{4})?\b/)
     if (m) { city = city || m[1].trim(); state = state || m[2]; zip = zip || m[3] }
@@ -142,7 +134,6 @@ function parsePage(t: string): ParsedLead | null {
   const gRaw = grab(t, [/gender\s*\??:?\s*(Male|Female|M|F)\b/i])
   const gender = gRaw ? (gRaw.toLowerCase().startsWith('m') ? 'Male' : 'Female') : ''
 
-  // Tobacco: "...: Yes/No" (postcard) OR "Tobacco Use (client) True/False" (Quility)
   const tobMatch = t.match(/tobacco[^\n]*?[:\s]\s*(Yes|No|Y|N|True|False)\b/i)
   const tobacco_use = tobMatch ? (/^(y|t)/i.test(tobMatch[1]) ? 'Yes' : 'No') : 'Unknown'
   const coMatch = t.match(/co.?borrower[^\n]*?:\s*(Yes|No|Y|N)\b/i)
@@ -164,20 +155,26 @@ function parsePage(t: string): ParsedLead | null {
 }
 
 export async function POST(req: NextRequest) {
+  const denied = await requireAgent(req);
+  if (denied) return denied;
   try {
     let pages: string[] = []
     const ct = req.headers.get('content-type') || ''
     if (ct.includes('application/json')) {
-      // Browser already extracted the text (used for large PDFs that exceed the
-      // serverless upload size limit) — just parse it.
+
+
       const body = await req.json()
       pages = Array.isArray(body?.pages) ? body.pages.map((p: any) => String(p || '')) : []
+      if (pages.length > 500 || pages.reduce((total, page) => total + page.length, 0) > 2000000) return NextResponse.json({ error: 'Text is too large.' }, { status: 413 })
       if (pages.length === 0) return NextResponse.json({ error: 'No page text provided' }, { status: 400 })
     } else {
       const formData = await req.formData()
       const file = formData.get('file') as File
       if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 })
+      if (file.size > 4 * 1024 * 1024) return NextResponse.json({ error: 'PDF is too large.' }, { status: 413 })
+      if (!file.name?.toLowerCase().endsWith('.pdf')) return NextResponse.json({ error: 'Please choose a PDF file.' }, { status: 400 })
       const buffer = Buffer.from(await file.arrayBuffer())
+      if (!buffer.subarray(0, 1024).includes(Buffer.from('%PDF-'))) return NextResponse.json({ error: 'Invalid PDF file.' }, { status: 400 })
       const { extractText, getDocumentProxy } = await import('unpdf')
       const pdf = await getDocumentProxy(new Uint8Array(buffer))
       const r = await extractText(pdf, { mergePages: false })
@@ -195,6 +192,6 @@ export async function POST(req: NextRequest) {
     }
     return NextResponse.json({ leads, count: leads.length })
   } catch (err: any) {
-    return NextResponse.json({ error: err.message || String(err) }, { status: 500 })
+    return NextResponse.json({ error: 'The document could not be processed. Try another PDF or enter the details manually.' }, { status: 422 })
   }
 }

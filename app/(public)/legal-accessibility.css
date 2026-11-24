@@ -3,3 +3,16 @@
 .public-refresh .agency-footer a{text-decoration:underline;text-underline-offset:3px}
 .public-refresh :is(#main-content) :is(h2,h3){scroll-margin-top:110px}
 @media(prefers-reduced-motion:reduce){.public-refresh *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.public-refresh{background:#fffaf3!important;color:#3d342e!important}
+.public-refresh .agency-footer-disclosure{color:#d1dacb}
+.public-refresh main.agency-join:has(form) section:first-child p{color:#fffaf3!important}
+.public-refresh main.agency-join:has(form) .absolute.bottom-0 p{color:#fffaf3!important}
+.public-refresh main.agency-join:has(form) a[href="https://tdi.texas.gov/agent/general-life-apply.html"]{color:#90452f!important}
+.public-refresh main:has(form) input[type=checkbox]{min-height:auto;width:18px;height:18px;flex-shrink:0}
+.public-refresh main:has(form) input::placeholder,.public-refresh main:has(form) textarea::placeholder{color:#71645b;opacity:1}
+.privacy-video{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;background:#f7eee3;color:#3d342e}
+.public-refresh .privacy-video p{color:#3d342e!important;font-size:clamp(10px,1.3vw,14px)!important;line-height:1.4;margin:5px 0}
+.privacy-video button,.carrier-pause{background:#485747;color:#fffaf3;border:1px solid #485747;border-radius:6px;padding:10px 16px;font:inherit;cursor:pointer;margin:8px}
+.privacy-video a{font-size:12px;text-decoration:underline;color:#90452f}
+.carrier-pause{display:block;margin:0 16px 16px auto;font-size:13px}
