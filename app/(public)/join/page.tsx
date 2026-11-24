@@ -199,7 +199,7 @@ style={{ borderColor: "#e2e8f0", background: "#fffaf3", boxShadow: "0 2px 12px r
 </section>
 
 {/* LEADS — Darkest Blue */}
-<section className="py-24 px-6" style={{ background: darkest }}>
+<section className="join-dark py-24 px-6" style={{ background: darkest }}>
 <div className="max-w-7xl mx-auto">
 <div className="grid md:grid-cols-2 gap-16 items-center mb-16">
 <div>
@@ -273,7 +273,7 @@ style={{ background: "#fffaf3", border: "1px solid #e2e8f0", boxShadow: "0 2px 1
 </section>
 
 {/* PRODUCTS + CARRIERS */}
-<section className="py-24 px-6" style={{ background: royal }}>
+<section className="join-dark py-24 px-6" style={{ background: royal }}>
 <div className="max-w-7xl mx-auto">
 <div className="text-center mb-16">
 <p className="font-black uppercase tracking-widest mb-3" style={{ color: "#fffaf3", fontSize: "0.7rem", letterSpacing: "0.2em" }}>
@@ -308,7 +308,7 @@ style={{ background: "rgba(255,255,255,0.1)", color: "#fff", border: "1px solid 
 </section>
 
 {/* WHO WE'RE LOOKING FOR */}
-<section className="py-24 px-6" style={{ background: midnight }}>
+<section className="join-dark py-24 px-6" style={{ background: midnight }}>
 <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 <div>
 <p className="font-black uppercase tracking-widest mb-4" style={{ color: skyBlue, fontSize: "0.7rem", letterSpacing: "0.2em" }}>
