@@ -1,3 +1,4 @@
+import "./legal-accessibility.css";
 import "./refresh.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";

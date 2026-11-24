@@ -1,0 +1,5 @@
+
+.public-refresh :is(a,button,input,select,textarea,summary):focus-visible{outline:3px solid #a9553b!important;outline-offset:4px!important}
+.public-refresh .agency-footer a{text-decoration:underline;text-underline-offset:3px}
+.public-refresh :is(#main-content) :is(h2,h3){scroll-margin-top:110px}
+@media(prefers-reduced-motion:reduce){.public-refresh *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

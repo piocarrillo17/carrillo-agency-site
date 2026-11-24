@@ -1,3 +1,4 @@
+import ContactNotice from "@/components/ContactNotice";
 import "./join.css";
 export default function Join() {
 const leadTypes = [
@@ -374,6 +375,7 @@ Hear From Our Agents
 <h2 className="font-black leading-tight mb-4" style={{ color: midnight, fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 900 }}>
 Perspectives From the Field.
 </h2>
+<p className="mb-4" style={{color:"#71645b",lineHeight:1.7}}>Individual experiences vary. These stories do not establish typical earnings. Results depend on effort, skills, expenses, and market conditions. Earnings are not guaranteed.</p>
 <p style={{ color: "#71645b", fontWeight: 300, fontSize: "1rem", maxWidth: "460px", margin: "0 auto" }}>
 See how agents across the country are building careers and changing their lives with Symmetry Financial Group.
 </p>
@@ -438,7 +440,7 @@ Join the Carrillo Agency
 Powered by Symmetry Financial Group
 </p>
 <p style={{ color: "#71645b", fontWeight: 300, fontSize: "1rem" }}>
-Fill out the form and Pio will personally reach out within 24 hours.
+Fill out the form and Pio will follow up using your preferred contact method.
 </p>
 </div>
 
@@ -512,13 +514,14 @@ placeholder="What are you looking to build? Why are you interested in joining Th
 className="w-full rounded-lg px-4 py-3 focus:outline-none resize-none"
 style={{ background: "#fffaf3", border: "1.5px solid #d1d5db", color: midnight, fontSize: "0.9rem", fontFamily: "inherit" }} />
 </div>
+<ContactNotice recruiting />
 <button type="submit"
 className="w-full py-4 rounded-xl text-black mt-2 transition-all hover:opacity-90"
 style={{ background: yellow, fontWeight: 900, fontSize: "0.9rem", letterSpacing: "0.08em" }}>
 SUBMIT MY APPLICATION
 </button>
 <p className="text-center" style={{ color: "#94a3b8", fontSize: "0.75rem", fontWeight: 300 }}>
-No spam. Pio will personally follow up within 24 hours.
+Pio will follow up using your preferred contact method.
 </p>
 </form>
 </div>

@@ -24,7 +24,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "The Carrillo Agency | Insurance & Financial Protection",
-  description: "Independent insurance agency. Life insurance, final expense, mortgage protection, and debt-free life solutions for families across all 50 states.",
+  description: "Independent insurance agency. Life insurance, final expense, mortgage protection, and debt-free life solutions subject to state availability and producer licensing.",
   icons: {
     icon: [{ url: "/icon-192.png?v=carrillo", type: "image/png", sizes: "192x192" }],
     apple: "/apple-touch-icon.png",

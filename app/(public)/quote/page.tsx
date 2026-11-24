@@ -1,4 +1,5 @@
 "use client";
+import ContactNotice from "@/components/ContactNotice";
 import { useState, type FormEvent } from "react";
 export default function QuotePage() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -7,6 +8,7 @@ export default function QuotePage() {
     if (status === "sending") return;
     const form = event.currentTarget;
     const data = new FormData(form);
+    data.set("Submitted at (UTC)", new Date().toISOString());
     if (data.get("botcheck")) return;
     setStatus("sending");
     try {
@@ -30,7 +32,7 @@ export default function QuotePage() {
             Get Your <span style={{ color: "#C9A84C" }}>Free Quote</span>
           </h1>
           <p className="text-[#94A3B8] text-lg max-w-md mx-auto">
-            Fill out the form below and Pio will reach out within 24 hours with personalized coverage options.
+            Fill out the form below and Pio will follow up to discuss your coverage goals and available options.
           </p>
         </div>
 
@@ -148,6 +150,7 @@ export default function QuotePage() {
             />
           </div>
 
+          <ContactNotice />
           <button
             type="submit"
             disabled={status === "sending"}
@@ -161,7 +164,7 @@ export default function QuotePage() {
             {status === "error" && <p role="alert">Your request could not be confirmed. Please try again, <a href="tel:2108705200">call (210) 870-5200</a>, or email piocarrillosfg@gmail.com.</p>}
           </div>
           <p className="text-center text-[#64748B]" style={{ fontSize: "0.75rem" }}>
-            No spam. No pressure. Pio will personally reach out within 24 hours.
+            No spam. No pressure. Pio will follow up using your preferred contact method.
           </p>
         </form>
       </div>
